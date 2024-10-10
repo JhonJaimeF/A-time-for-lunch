@@ -1,7 +1,7 @@
 
 const Dinero= require('./../models/dinero')
 
-
+////
 module.exports= {
     findAll : async(req, res)=>{
         return null
