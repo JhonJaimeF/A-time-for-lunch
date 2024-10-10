@@ -6,19 +6,17 @@ const app = express();
 // Conectar a la base de datos
 require('./drivers/connect-db');
 
-const swaggerUI = require('swagger-ui-express');
-const swaggerSpec = require('./swagger');
 
-app.set('PORT', process.env.PORT || 3030);
+app.set('PORT', process.env.PORT || 3005);
 
 // Configurar middlewares
 app.use(cors());
 app.use(express.json());
-app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+//app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // Configurar rutas
-app.use('/shops', require('./routes/shop'));
-app.use('/instruments', require('./routes/instrument'));
+//app.use('/shops', require('./routes/shop'));
+app.use('/dineros', require('./routes/dinero'));
 
 // Iniciar el servidor (solo una vez)
 app.listen(app.get('PORT'), () => {
