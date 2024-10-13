@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Bienvenido al Dashboard</h2>
+        <button id="btnLogout" class="btn btn-danger">Cerrar Sesión</button>
+    </div>
+
+    <script>
+        // Verifica si hay un token almacenado
+        if (!localStorage.getItem('authToken')) {
+            window.location.href = 'index.html'; // Redirige al inicio de sesión si no hay token
+        }
+
+        // Manejo de cierre de sesión
+        document.querySelector("#btnLogout").addEventListener('click', () => {
+            localStorage.removeItem('authToken'); // Elimina el token
+            window.location.href = 'index.html'; // Redirige al inicio de sesión
+        });
+    </script>
+</body>
+</html>
