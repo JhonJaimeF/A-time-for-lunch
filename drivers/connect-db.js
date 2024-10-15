@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const URI = "mongodb://localhost:27017"
+const URI = "mongodb+srv://jhonsalazar01:gYNE3RqRJfNpRi0y@final.0ux8x.mongodb.net/?retryWrites=true&w=majority&appName=Final;"
 
 mongoose.set('strictQuery', false)
 
