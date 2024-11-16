@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reservar Mesa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/my-login.css">
+    <style>
+        .mesa {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            display: inline-block;
+            text-align: center; /* Centra el texto horizontalmente */
+            line-height: 50px; /* Centra el texto verticalmente */
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .mesa.disponible {
+            background-color: #dff0d8;
+        }
+        .mesa.reservada {
+            background-color: #f2dede;
+        }
+        .mesa:hover {
+            background-color: #f0ad4e;
+        }
+        .reservar {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="my-login-page">
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-md-center h-100">
+                <div class="card fat">
+                    <div class="card-body">
+                        <h4 class="card-title">Reservar Mesa</h4>
+
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fecha">Fecha</label>
+                                    <input id="fecha" type="date" class="form-control" required autofocus>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="hora">Hora</label>
+                                    <input id="hora" step="900" type="time" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="num-personas">Número de personas</label>
+                                    <input id="num-personas" type="number" class="form-control" required>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+
+                                <div class="form-group m-0">
+                                    <button id="btnSend" type="submit" class="btn btn-primary btn-block">
+                                        Reservar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h5>Selecciona una mesa:</h5>
+                                <div id="mesas">
+                                    <div class="mesa disponible" data-mesa="1">1</div>
+                                    <div class="mesa disponible" data-mesa="2">2</div>
+                                    <div class="mesa disponible" data-mesa="3">3</div>
+                                    <div class="mesa disponible" data-mesa="4">4</div>
+                                    <div class="mesa disponible" data-mesa="5">5</div>
+                                    <div class="mesa disponible" data-mesa="5">5</div>
+                                    <div class="mesa disponible" data-mesa="5">5</div>
+                                    <div class="mesa disponible" data-mesa="5">5</div>
+                                    <div class="mesa disponible" data-mesa="5">5</div>
+                                    <div class="mesa disponible" data-mesa="5">5</div>
+                                    <div class="mesa disponible" data-mesa="5">5</div>
+                                    <div class="mesa disponible" data-mesa="5">5</div>
+                                    <div class="mesa disponible" data-mesa="5">5</div>
+                         
+
+                                <div class="reservar" id="reservar">
+                                    <h5 id="mensaje"></h5>
+                                    <button id="confirmar" class="btn btn-success">Confirmar Reserva</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rTqB4G0r8uB6N8K1s4K3hWcD8I+2ZcKXc4hFNY2wC0M6z5D6x45" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        const mesas = document.querySelectorAll('.mesa');
+        const reservarDiv = document.getElementById('reservar');
+        const mensaje = document.getElementById('mensaje');
+        let mesaSeleccionada = null;
+
+        mesas.forEach(mesa => {
+            mesa.addEventListener('click', function() {
+                if (mesa.classList.contains('disponible')) {
+                    if (mesaSeleccionada) {
+                        mesaSeleccionada.classList.remove('reservada');
+                    }
+                    mesaSeleccionada = mesa;
+                    mesaSeleccionada.classList.add('reservada');
+                    mensaje.innerText = `Has seleccionado la mesa ${mesa.innerText}`;
+                    reservarDiv.style.display = 'block';
+                }
+            });
+        });
+
+        document.getElementById('confirmar').addEventListener('click', function() {
+            if (mesaSeleccionada) {
+                mesaSeleccionada.classList.remove('disponible', 'reservada');
+                mesaSeleccionada.classList.add('reservada');
+                mensaje.innerText = `La mesa ${mesaSeleccionada.innerText} ha sido reservada.`;
+                reservarDiv.style.display = 'none';
+                mesaSeleccionada = null;
+            }
+        });
+
+        document.getElementById('btnSend').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            alert("La reserva se ha enviado correctamente.");
+        });
+    </script>
+</body>
+</html>

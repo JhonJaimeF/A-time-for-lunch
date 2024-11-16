@@ -40,6 +40,13 @@ body.my-login-page {
 
 .my-login-page .card.fat {
     padding: 10px;
+    width: 3000px;
+}
+
+.my-login-page .card.fae {
+    padding: 10px;
+    width: 390px;
+ 
 }
 
 .my-login-page .card .card-title {

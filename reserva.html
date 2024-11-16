@@ -10,9 +10,14 @@
     <div class="container">
         <h2 class="mt-5">Bienvenido al Dashboard</h2>
         <button id="btnLogout" class="btn btn-danger">Cerrar Sesión</button>
+        
     </div>
 
     <script>
+        const authToken = localStorage.getItem('authToken');
+
+// Obtiene el ID del usuario
+
         // Verifica si hay un token almacenado
         if (!localStorage.getItem('authToken')) {
             window.location.href = 'index.html'; // Redirige al inicio de sesión si no hay token
@@ -21,6 +26,7 @@
         // Manejo de cierre de sesión
         document.querySelector("#btnLogout").addEventListener('click', () => {
             localStorage.removeItem('authToken'); // Elimina el token
+            localStorage.removeItem('userId');//Elimina el userId
             window.location.href = 'index.html'; // Redirige al inicio de sesión
         });
     </script>
