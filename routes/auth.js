@@ -39,7 +39,10 @@ router.post('/login', async (req, res) => {
     // Colocando el token en el header y el cuerpo de la respuesta
     res.header('auth-token', token).json({
         error: null,
-        data: { token },
+        data: {
+            token,
+            userId: user._id // Incluye el ID del usuario en la respuesta
+        },
         message: 'Bienvenido'
     })
 })
