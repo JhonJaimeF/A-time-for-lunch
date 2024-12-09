@@ -7,10 +7,11 @@ const {
     deleteReservacion,
     findById
 } = require('./../controller/controll-reservacion')
+const verifyToken = require('./validate-token')
 
 routes.get('/',listReservaciones)
 routes.get('/:id',findById)
-routes.post('/',createReservacion)
+routes.post('/:id', verifyToken,createReservacion)
 routes.put('/', updateReservacion)
 routes.delete('/',deleteReservacion)
 

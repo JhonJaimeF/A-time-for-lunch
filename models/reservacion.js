@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { type } = require('os');
 
 
 const { Schema } = mongoose;
@@ -29,10 +30,11 @@ const schemaReservacion= new Schema({
         required: true,
         min: 1
     },
-    estadoReservacion: {
-        type: String,
-        enum: ['pendiente', 'confirmada', 'cancelada'],
-        default: 'pendiente'
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'user',
+        require: true
+
     }
 })
 

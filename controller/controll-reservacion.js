@@ -13,7 +13,7 @@ module.exports = {
         mesa,
         fechaReservacion,
         numeroPersonas,
-        estadoReservacion,
+        user: req.user.id
         
       });
       return res.status(201).json({ state: true, data: reservacion });
