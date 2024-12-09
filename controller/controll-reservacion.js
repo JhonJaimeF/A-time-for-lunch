@@ -32,7 +32,8 @@ module.exports = {
     }
   },
 
-  // Actualizar una reservación por su ID
+
+  
   updateReservacion: async (req, res) => {
     const { id } = req.params;
     const { nameCliente, idCliente, mesa, fechaReservacion, numeroPersonas, estadoReservacion } = req.body;
