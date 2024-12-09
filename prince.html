@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/my-login.css">
+	<link rel="stylesheet" type="text/css" href="css/loader.css">
+	<link rel="stylesheet" type="text/css" href="css/loa.css">
+
+    <title>Página Principal - Restaurante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #333;
+            padding: 10px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background: #444;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: #555;
+        }
+        
+        main {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .main-image {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .main-image h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        .product-section {
+            margin-top: 0px;
+        }
+        
+        .product-section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .product-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+        
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 320px;
+            text-align: left;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .product-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-top: 15px;
+        }
+        
+        .product-card p {
+            color: #777;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        
+        section {
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#reservaciones">Reservaciones</a>
+        <a href="#financiero">Financiero</a>
+        <a href="#empleados">Empleados</a>
+        <a href="#cuenta">Cuenta</a>
+    </nav>
+
+    <main>
+        <div class="main-image">
+            <img src="img/Fondo.jpeg" alt="Imagen Principal del Restaurante">
+            <h1>Bienvenido a Nuestro Restaurante</h1>
+        </div>
+        <section id="principales-productos" class="product-section">
+            <h2>Principales Platos</h2>
+            <div class="product-cards">
+                <div class="product-card">
+                    <img src="img/1.png" alt="Paella Valenciana">
+                    <h3>Hamburguesa Deluxe</h3>
+                    <p>Una deliciosa Hamburguesa con carne de 180gr y con verduras frescas.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/cevipes.webp" alt="Ceviche de Pescado">
+                    <h3>Ceviche de Pescado</h3>
+                    <p>Pescado fresco marinado con limón, cebolla y cilantro.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/filete.jpg" alt="Filete Mignon">
+                    <h3>Filete Mignon</h3>
+                    <p>Un tierno filete de res acompañado de vegetales asados y puré de papas.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/2.jpeg" alt="Enchiladas Verdes">
+                    <h3>Enchiladas Verdes</h3>
+                    <p>Tortillas rellenas de pollo bañadas en salsa verde, acompañadas de arroz y frijoles.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/3.jpg" alt="Pizza Margarita">
+                    <h3>Pizza Margarita</h3>
+                    <p>Pizza tradicional con salsa de tomate, mozzarella y albahaca fresca.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/tacos-al-pastor-receta.webp" alt="Pizza Margarita">
+                    <h3>Tacos al pastor</h3>
+                    <p>Tacos con carne al pastor.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Restaurante - Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
