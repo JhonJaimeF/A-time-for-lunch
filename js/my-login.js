@@ -4,7 +4,7 @@ document.querySelector("#btnSend").addEventListener('click', () => {
 
     const data = { email: email, password: password };
 
-    const URL = "https://api-user-render-q9ly.onrender.com/api/user/login";
+    const URL = "https://api-users-cors.onrender.com/api/user/login";
 
     errorMessage.style.display = 'none';
     loader.style.display = 'flex';
