@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Rutas
 app.use('/reservaciones', require('./routes/reservacion'));
+app.use('/users', require('./routes/user'));
 app.use('/api/user', authRoutes);
 app.use('/api/dashboard', verifyToken, dashboardRoutes);
 

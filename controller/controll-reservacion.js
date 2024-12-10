@@ -3,7 +3,7 @@ const Reservacion = require('./../models/reservacion');
 module.exports = {
   // Crear una nueva reservación
   createReservacion: async (req, res) => {
-    const { id, nameCliente, idCliente, mesa, fechaReservacion, numeroPersonas, estadoReservacion } = req.body;
+    const { id, nameCliente, idCliente, mesa, fechaReservacion, numeroPersonas } = req.body;
 
     try {
       const reservacion = await Reservacion.create({
@@ -36,7 +36,7 @@ module.exports = {
   
   updateReservacion: async (req, res) => {
     const { id } = req.params;
-    const { nameCliente, idCliente, mesa, fechaReservacion, numeroPersonas, estadoReservacion } = req.body;
+    const { nameCliente, idCliente, mesa, fechaReservacion, numeroPersonas } = req.body;
 
     try {
       const reservacion = await Reservacion.findByIdAndUpdate(id, {
@@ -45,7 +45,7 @@ module.exports = {
         mesa,
         fechaReservacion,
         numeroPersonas,
-        estadoReservacion
+        
         
       }, { new: true });
       if (reservacion) {

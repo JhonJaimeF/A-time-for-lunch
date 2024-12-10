@@ -11,7 +11,7 @@ const verifyToken = require('./validate-token')
 
 routes.get('/',listReservaciones)
 routes.get('/:id',findById)
-routes.post('/:id', verifyToken,createReservacion)
+routes.post('/', verifyToken,createReservacion)
 routes.put('/', updateReservacion)
 routes.delete('/',deleteReservacion)
 
