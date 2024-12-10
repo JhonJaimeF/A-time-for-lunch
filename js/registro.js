@@ -38,7 +38,7 @@ if (isValid) {
 
 loader.style.display = 'flex';
 
-    const URL = "https://69e1-186-84-90-91.ngrok-free.app/api/user/register";
+    const URL = "https://api-users-rho.vercel.app/api/user/register";
 
     fetch(URL, {
         method: "POST",
@@ -120,4 +120,31 @@ function validateEmail(email) {
 function validatePassword(password) {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
     return password.trim() !== '' && passwordRegex.test(password);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const dataConsentCheckbox = document.getElementById("dataConsent");
+    const registerButton = document.getElementById("btnSendR");
+
+    // Evento para habilitar/deshabilitar el botón
+    dataConsentCheckbox.addEventListener("change", () => {
+        registerButton.disabled = !dataConsentCheckbox.checked;
+    });
+});
+
+function openPrivacyPolicy(event) {
+    event.preventDefault(); // Evita que el enlace abra la página de forma predeterminada.
+
+    // Configuración de la ventana emergente
+    const width = 600;
+    const height = 400;
+    const left = (window.innerWidth - width) / 2;
+    const top = (window.innerHeight - height) / 2;
+
+    // Abre una nueva ventana
+    window.open(
+        "privacy-policy.html", // URL de la política de privacidad
+        "PrivacyPolicy", // Nombre de la ventana
+        `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`
+    );
 }
