@@ -7,12 +7,62 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h2 class="mt-5">MODULO DE RECERVACIÓN</h2>
-        <button id="btnLogout" class="btn btn-danger">Cerrar Sesión</button>
-        
-    </div>
-
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-md-center h-100">
+                <div class="card-wrapper">
+                    <div class="brand">
+                        
+                    </div>
+                    <div class="card fat">
+                        <div class="card-body">
+                            <h4 class="card-title">Formulario de Reservación</h4>
+    
+                            <form action="/reservaciones" method="POST">
+                                <div class="form-group">
+                                    <label for="id">ID de la Reservación:</label>
+                                    <input type="text" id="id" name="id" class="form-control" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <label for="nameCliente">Nombre del Cliente:</label>
+                                    <input type="text" id="nameCliente" name="nameCliente" class="form-control" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <label for="idCliente">ID del Cliente:</label>
+                                    <input type="text" id="idCliente" name="idCliente" class="form-control" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <label for="mesa">Número de Mesa:</label>
+                                    <input type="text" id="mesa" name="mesa" class="form-control" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <label for="fechaReservacion">Fecha de la Reservación:</label>
+                                    <input type="date" id="fechaReservacion" name="fechaReservacion" class="form-control" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <label for="numeroPersonas">Número de Personas:</label>
+                                    <input type="number" id="numeroPersonas" name="numeroPersonas" class="form-control" min="1" required>
+                                </div>
+    
+    
+                                <div class="form-group m-0">
+                                    <button id="btnSend" type="submit" class="btn btn-success btn-block">
+                                        Hacer Reservación
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         const authToken = localStorage.getItem('authToken');
 
@@ -31,4 +81,8 @@
         });
     </script>
 </body>
+
+
+
+
 </html>
