@@ -21,9 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
       numeroPersonas: numeroPersonas,
     };
 
-    // Mostrar los datos capturados en la consola
-    console.log("Datos de la Reservación:");
-    console.log(data);
+
 
     // Realizar el POST con fetch
     fetch('https://modulo-reservaciones.vercel.app/reservaciones', {
@@ -40,8 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
         return response.json();
       })
       .then(responseData => {
-        console.log('Respuesta del servidor:', responseData);
-        alert('¡Datos enviados exitosamente! Revisa la consola para más detalles.');
+        
+
+        // Recargar la página
+        window.location.reload();
+
+        // Desplazar automáticamente al final
+        
       })
       .catch(error => {
         console.error('Error al enviar la solicitud:', error);
