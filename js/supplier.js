@@ -73,3 +73,63 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch(error => console.error('Error fetching suppliers:', error));
 });
+
+// Mostrar modal Crear
+document.getElementById('crear').addEventListener('click', () => {
+  document.getElementById('modal').style.display = 'flex';
+});
+
+// Cerrar modal Crear
+document.getElementById('close-crear').addEventListener('click', () => {
+  document.getElementById('modal').style.display = 'none';
+});
+
+// Cerrar modal Crear al hacer clic fuera de él
+window.addEventListener('click', (event) => {
+  const modal = document.getElementById('modal');
+  if (event.target === modal) {
+      modal.style.display = 'none';
+  }
+});
+
+
+// Mostrar modal Actualizar
+document.getElementById('actualizar').addEventListener('click', () => {
+  document.getElementById('modal-update').style.display = 'flex';
+});
+
+// Cerrar modal Actualizar
+document.getElementById('close-update').addEventListener('click', () => {
+  document.getElementById('modal-update').style.display = 'none';
+});
+
+// Cerrar modal Actualizar al hacer clic fuera de él
+window.addEventListener('click', (event) => {
+  const modal = document.getElementById('modal-update');
+  if (event.target === modal) {
+      modal.style.display = 'none';
+  }
+});
+
+
+// Mostrar modal Eliminar
+document.getElementById('eliminar').addEventListener('click', () => {
+  document.getElementById('modal-delete').style.display = 'flex';
+});
+
+// Cerrar modal Eliminar
+document.getElementById('close-delete').addEventListener('click', () => {
+  document.getElementById('modal-delete').style.display = 'none';
+});
+
+// Cerrar modal Eliminar al hacer clic fuera de él
+window.addEventListener('click', (event) => {
+  const modal = document.getElementById('modal-delete');
+  if (event.target === modal) {
+      modal.style.display = 'none';
+  }
+});
+
+
+
+

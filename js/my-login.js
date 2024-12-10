@@ -4,7 +4,8 @@ document.querySelector("#btnSend").addEventListener('click', () => {
 
     const data = { email: email, password: password };
 
-    const URL = "https://api-users-rho.vercel.app/api/user/login";
+    //const URL = "https://api-users-rho.vercel.app/api/user/login";
+    const URL = "https://61fa-186-84-90-91.ngrok-free.app/api/user/login";
 
     errorMessage.style.display = 'none';
     loader.style.display = 'flex';
@@ -30,7 +31,7 @@ document.querySelector("#btnSend").addEventListener('click', () => {
                 }
                 
                 if (email === 'attimeforlunch@gmail.com') {
-                    window.location.href = 'supplier.html';
+                    window.location.href = 'administrador.html';
                     return; // Detenemos la ejecución del resto del código
                 } else {
                     window.location.href = 'reserva.html'; // Redirige a la página protegida

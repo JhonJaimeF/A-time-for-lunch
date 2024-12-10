@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#table{
+    width: 100%;
+}
+th {
+    background-color: #d4edda; /* Verde suave */
+}
+
+.container-fluid.custom-padding {
+    padding: 5%;
+}
+
+.title-container {
+    display: flex; /* Activa el modelo flexbox */
+    align-items: center; /* Alinea verticalmente el contenido */
+    justify-content: space-between; /* Separa los elementos en los extremos */
+    gap: 10px; /* Espacio entre el título y el botón */
+    margin-bottom: 20px; /* Espaciado inferior para separación de otros elementos */
+}
+
+.btn-group{
+    gap: 10px;
+}
+#crear {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#crear:hover {
+    background-color: #0056b3;
+}
+
+
+.modal {
+    display: none; /* Ocultar por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7); /* Fondo difuminado */
+    backdrop-filter: blur(5px); /* Efecto de difuminado */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
