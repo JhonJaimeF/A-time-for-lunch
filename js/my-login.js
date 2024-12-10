@@ -30,10 +30,10 @@ document.querySelector("#btnSend").addEventListener('click', () => {
                 }
                 
                 if (email === 'attimeforlunch@gmail.com') {
-                    window.location.href = 'administrador.html';
+                    window.location.href = 'reserva.html';
                     return; // Detenemos la ejecución del resto del código
                 } else {
-                    window.location.href = 'reserva.html'; // Redirige a la página protegida
+                    window.location.href = 'reservaCliente.html'; // Redirige a la página protegida
                 } 
             }
         } else {
