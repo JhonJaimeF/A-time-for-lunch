@@ -1,36 +1,87 @@
-// IIFE para obtener todas las entradas de dinero
-(() => {
-    fetch('http://localhost:3030/dinero')
-      .then(response => response.json())
-      .then(data => console.log(data))   
-      .catch(err => console.log(err));
-  })();
-  
-  // Evento click para enviar una nueva entrada de dinero
-  document.querySelector("#btnSend").addEventListener('click', () => {
-    const id = document.querySelector('#id').value;
-    const description = document.querySelector('#description').value;
-    const value = document.querySelector('#value').value;
-  
-    // Creando el objeto con los datos de la entrada de dinero
-    const data = {
-      id: id,
-      description: description,
-      value: value
-    };
-  
-    const URL = "https://modulo-fianciero.vercel.app/dineros";
-  
-    // Enviando la nueva entrada con POST
-    fetch(URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('modal');
+  const openModalButton = document.getElementById('openModalButton');
+  const closeModal = document.getElementById('close-crear');
+  const tableBody = document.querySelector('#transactionTable tbody');
+  const form = document.querySelector('form');
+
+  // Mostrar el modal
+  openModalButton.addEventListener('click', () => {
+      modal.style.display = 'flex';
   });
-  
+
+  // Cerrar el modal
+  closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+  });
+
+  // Cerrar el modal al hacer clic fuera de él
+  window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+          modal.style.display = 'none';
+      }
+  });
+
+  // Obtener datos para la tabla
+  async function fetchTransactions() {
+      try {
+          const response = await fetch('https://modulo-fianciero.vercel.app/dineros');
+          if (!response.ok) throw new Error('Error al obtener datos');
+          const data = await response.json();
+          renderTable(data);
+      } catch (error) {
+          console.error('Error al cargar transacciones:', error);
+      }
+  }
+
+  // Renderizar la tabla
+  function renderTable(transactions) {
+      tableBody.innerHTML = '';
+      transactions.data.forEach(transaction => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+              <td>${transaction.id}</td>
+              <td>${transaction.description}</td>
+              <td>${transaction.value}</td>
+          `;
+          tableBody.appendChild(row);
+      });
+  }
+
+  // Enviar datos al servidor (POST)
+  async function saveTransaction(event) {
+      event.preventDefault(); // Evitar el envío predeterminado del formulario
+
+      const formData = new FormData(form);
+      const transaction = {
+          id: formData.get('id'),
+          description: formData.get('description'),
+          value: formData.get('value')
+      };
+
+      try {
+          const response = await fetch('https://modulo-fianciero.vercel.app/dineros', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(transaction)
+          });
+
+          if (!response.ok) throw new Error('Error al guardar la transacción');
+          
+          // Cerrar el modal y actualizar la tabla tras un guardado exitoso
+          modal.style.display = 'none';
+          fetchTransactions(); // Volver a cargar las transacciones
+          form.reset(); // Limpiar el formulario
+      } catch (error) {
+          console.error('Error al guardar la transacción:', error);
+      }
+  }
+
+  // Asociar el evento de envío del formulario
+  form.addEventListener('submit', saveTransaction);
+
+  // Cargar transacciones al inicio
+  fetchTransactions();
+});
