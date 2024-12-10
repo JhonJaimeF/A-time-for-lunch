@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supplier Data</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/stylesInventory.css" rel="stylesheet"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+  <div class="container mt-5" id="table">
+    <h2>Supplier Data</h2>
+    <div class="form-group">
+      <label for="supplierSelect">Select Supplier:</label>
+      <select id="supplierSelect" class="form-control">
+        <option value="">-- Select a Supplier --</option>
+      </select>
+    </div>
+
+    <h3>Supplier Details</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Contacto</th>
+          <th>Email</th>
+          <th>Dirección</th>
+          <th>Ciudad</th>
+        </tr>
+      </thead>
+      <tbody id="supplierTableBody">
+        <tr>
+          <td colspan="5">No ha seleccionado proveedor</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Products</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody id="supplierProductsTableBody">
+        <tr>
+          <td colspan="3">No ha seleccionado proveedor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="/js/supplier.js"></script>
+</body>
+</html>

@@ -6,7 +6,7 @@ body, html {
 }
 
 .background-container {
-    position: relative;
+    z-index: -10;
     background-image: url('../img/table-5696243_1920.jpg'); 
     background-size: cover;
     background-position: center;
@@ -34,21 +34,24 @@ body, html {
 }
 
 .logo {
-    display: block;
-    margin: 0 auto;
-    width: 150px; /* Ajusta el tamaño del logo según sea necesario */
+    position:absolute;
+    width: 150px; 
 }
 
-h1, p {
+h1 {
     text-align: center;
-    padding: 20px;
-    border-radius: 10px;
+    
+}
+
+p{
+    margin: 10px auto;
+    width: 65%;
 }
 
 button {
-    margin: 0 auto; /* Centrar el botón horizontalmente */
+    margin: 0 auto;
     display: block;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border: 2px solid white;
     background-color: transparent;
     color: white;
@@ -58,7 +61,8 @@ button {
 }
 
 button:hover {
-    transform: scale(1.1); /* Aumentar el tamaño en un 10% al hacer hover */
+    transform: scale(1.1); 
+    background-color: lightslategrey;
 }
 
 a{

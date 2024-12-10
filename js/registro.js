@@ -38,7 +38,7 @@ if (isValid) {
 
 loader.style.display = 'flex';
 
-    const URL = "http://localhost:4081/api/user/register";
+    const URL = "https://api-users-rho.vercel.app/api/user/register";
 
     fetch(URL, {
         method: "POST",
