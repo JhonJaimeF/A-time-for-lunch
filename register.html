@@ -107,13 +107,68 @@
 									<div class="info__closePassword"><svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z" fill="#393a37"></path></svg></div>
 								</div>
 
+								<div class="form-group">
+									<div class="form-check">
+										<input type="checkbox" id="dataConsent" class="form-check-input" name="dataConsent" required>
+										
 						
 
-								<div class="form-group m-0">
-									<button id="btnSendR" type="submit" class="btn btn-primary btn-block">
-										Registrarse	
-									</button>
+
+
+								<a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Acepto el tratamiento de mis datos personales conforme a la Política de Privacidad</a>
+
+								<!-- Modal -->
+								<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+								  <div class="modal-dialog">
+									<div class="modal-content">
+									  <div class="modal-header">
+										<h5 class="modal-title" id="privacyModalLabel">Política de Privacidad</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									  </div>
+									  <div class="modal-body">
+									
+										<p><strong>Última actualización:</strong> 07 de diciembre de 2024</p>
+									  
+										<p>At Time for Lunch, en cumplimiento de la Ley 1581 de 2012 y el Decreto 1377 de 2013, adopta la presente Política de Tratamiento de Datos Personales con el fin de garantizar la privacidad, seguridad y adecuada utilización de la información proporcionada por nuestros usuarios al momento de realizar su registro o iniciar sesión en nuestra plataforma.</p>
+									  
+										<strong>Datos Personales Recolectados</strong>
+										<br>
+										<p>Los datos personales que recopilamos durante el proceso de registro o login incluyen:</p>
+										<ul>
+										  <li>Nombre completo.</li>
+										  <li>Correo electrónico.</li>
+										  <li>Contraseña cifrada.</li>
+										</ul>
+									  
+										<strong>Finalidades del Tratamiento</strong>
+										<br>
+										<p>Los datos personales recopilados se utilizarán exclusivamente para:</p>
+										<ul>
+										  <li>Identificar y autenticar al usuario en la plataforma.</li>
+										  <li>Brindar acceso a las funcionalidades del sistema, como reserva de mesas y gestión del restaurante.</li>
+										  <li>Enviar notificaciones relevantes relacionadas con las reservas, cambios en las políticas o actualizaciones de la plataforma.</li>
+										</ul>
+									  
+										<strong>Modificaciones a la Política</strong>
+										<p>At Time for Lunch se reserva el derecho de actualizar esta política en cualquier momento. Los cambios serán notificados a los usuarios a través de los medios registrados, con una antelación de al menos quince (15) días.</p>
+									  
+										<strong>Aceptación de la Política</strong>
+										<p>Al registrarse o iniciar sesión en nuestra plataforma, el usuario declara que ha leído, comprendido y acepta los términos de la presente Política de Tratamiento de Datos Personales.</p>
+									  
+									  </div>
+									  <div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+									  </div>
+									</div>
+								  </div>
 								</div>
+								
+<br><br>
+<div class="form-group m-0">
+    <button id="btnSendR" type="submit" class="btn btn-primary btn-block" disabled>
+        Registrarse
+    </button>
+</div>
 								<div class="mt-4 text-center">
 									¿Ya tiene una cuenta? <a href="index.html">Iniciar Sesión</a>
 								</div>
@@ -125,6 +180,8 @@
 			</div>
 		</div>
 	</section>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src="js/registro.js"></script>
