@@ -9,27 +9,6 @@ main {
     padding: 20px;
 }
 
-button {
-    margin: 0 auto;
-    display: block;
-    padding: 10px 30px;
-    border: 2px solid white;
-    background-color: transparent;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.3s; /* Para el efecto de hover */
-}
-
-button:hover {
-    transform: scale(1.1); 
-    background-color: lightslategrey;
-}
-
-a{
-    text-decoration: none;
-}
-
 .main-image {
     position: relative;
     display: inline-block;
@@ -44,7 +23,7 @@ a{
     object-fit: cover;
 }
 
-.main-image h1 {
+.main-image h1{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -54,6 +33,27 @@ a{
     background: rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
     border-radius: 10px;
+}
+
+.main-image .btn-login {
+    margin: 0 auto;
+    position: relative;
+    padding: 10px 30px;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s; /* Para el efecto de hover */
+}
+
+.btn-login:hover {
+    transform: scale(1.1); 
+    background-color: lightslategrey;
+}
+
+a{
+    text-decoration: none;
 }
 
 .product-section {
