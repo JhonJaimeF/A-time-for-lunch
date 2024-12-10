@@ -38,7 +38,7 @@ if (isValid) {
 
 loader.style.display = 'flex';
 
-    const URL = "https://api-users-rho.vercel.app/api/user/register";
+    const URL = "https://69e1-186-84-90-91.ngrok-free.app/api/user/register";
 
     fetch(URL, {
         method: "POST",

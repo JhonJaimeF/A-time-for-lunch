@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/stylesAdmin-Nab.css">
+    <link rel="stylesheet" href="./css/styles-financiero.css">
+    <title>Formulario de Transacción Financiera</title>
 </head>
 <body>
+    <header>
+        <img class="logo" src="./img/logo.png" alt="Logo">
+        <button id="abrir" class="abrir-menu"><i class="bi bi-list"></i></button>
+        <nav class="nav" id="nav">
+            <button class="cerrar-menu" id="cerrar"><i class="bi bi-x"></i></button>
+            <ul class="nav-list">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Empleados</a></li>
+                <li><a href="/supplier.html">Inventario</a></li>
+                <li><a href="/financiero.html">Financiero</a></li>
+                <li><a href="/reserva.html">reservaciones</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <section class="h-100">
         <div class="container h-100">
             <div class="row justify-content-md-center h-100">
@@ -19,21 +36,14 @@
                             <h4 class="card-title">Formulario de Reservación</h4>
     
                             <form action="/reservaciones" method="POST">
-                                <div class="form-group">
-                                    <label for="id">ID de la Reservación:</label>
-                                    <input type="text" id="id" name="id" class="form-control" required>
-                                </div>
+                            
     
                                 <div class="form-group">
                                     <label for="nameCliente">Nombre del Cliente:</label>
                                     <input type="text" id="nameCliente" name="nameCliente" class="form-control" required>
                                 </div>
     
-                                <div class="form-group">
-                                    <label for="idCliente">ID del Cliente:</label>
-                                    <input type="text" id="idCliente" name="idCliente" class="form-control" required>
-                                </div>
-    
+                           
                                 <div class="form-group">
                                     <label for="mesa">Número de Mesa:</label>
                                     <input type="text" id="mesa" name="mesa" class="form-control" required>
@@ -63,23 +73,9 @@
             </div>
         </div>
     </section>
-    <script>
-        const authToken = localStorage.getItem('authToken');
+   
+    <script src="./js/reservaciones.js"></script>
 
-// Obtiene el ID del usuario
-
-        // Verifica si hay un token almacenado
-        if (!localStorage.getItem('authToken')) {
-            window.location.href = 'index.html'; // Redirige al inicio de sesión si no hay token
-        }
-
-        // Manejo de cierre de sesión
-        document.querySelector("#btnLogout").addEventListener('click', () => {
-            localStorage.removeItem('authToken'); // Elimina el token
-            localStorage.removeItem('userId');//Elimina el userId
-            window.location.href = 'index.html'; // Redirige al inicio de sesión
-        });
-    </script>
 </body>
 
 
