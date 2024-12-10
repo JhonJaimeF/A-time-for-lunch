@@ -38,7 +38,7 @@ if (isValid) {
 
 loader.style.display = 'flex';
 
-    const URL = "https://api-user-render-q9ly.onrender.com/api/user/register";
+    const URL = "https://api-users-cors.onrender.com/api/user/register";
 
     fetch(URL, {
         method: "POST",
