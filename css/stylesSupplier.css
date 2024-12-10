@@ -24,7 +24,7 @@ th {
 .btn-group{
     gap: 10px;
 }
-#crear {
+#crear, #crear-producto {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #007bff;
@@ -34,7 +34,7 @@ th {
     cursor: pointer;
 }
 
-#crear:hover {
+#crear:hover, #crear-producto:hover{
     background-color: #0056b3;
 }
 

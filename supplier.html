@@ -30,41 +30,72 @@
    <div class="title-container">
   <h2>Supplier Data</h2>
   <div class="btn-group">
-    <button id="crear">Crear</button>
-  <button id="crear">Actualizar</button>
-  <button id="crear">Eliminar</button>
+    <button id="crear">Crear Proveedor</button>
+  <button id="crear-producto">Crear Producto</button>
   </div>
 </div>
 
-<!-- Modal Crear -->
+<!-- Modal Crear Proveedor -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close" id="close-crear">&times;</span>
-    <h2>Formulario Crear</h2>
-    <form>
+    <h2>Formulario Crear Proveedor</h2>
+    <form id="form-crear-proveedor">
+
+      <label for="externalId">Identificador:</label>
+      <input type="text" id="externalId" name="externalId" required>
+
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
+      <input type="text" id="nombre-proveedor" name="name" required>
+
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono-proveedor" name="phone" required>
+
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email-proveedor" name="email" required>
+
+      <label for="direccion-calle">Calle:</label>
+      <input type="text" id="direccion-calle" name="street" required>
+
+      <label for="direccion-ciudad">Ciudad:</label>
+      <input type="text" id="direccion-ciudad" name="city" required>
+
       <button type="submit">Enviar</button>
     </form>
   </div>
 </div>
 
-<!-- Modal Actualizar -->
+<!-- Modal Crear Producto -->
 <div id="modal-update" class="modal">
   <div class="modal-content">
     <span class="close" id="close-update">&times;</span>
-    <h2>Formulario Actualizar</h2>
-    <form>
+    <h2>Formulario Crear Producto</h2>
+    <form id="form-crear-producto">
+      <label for="proveedor">Proveedor:</label>
+      <select id="proveedor-producto" name="supplier" required>
+        <option value="">-- Selecciona un Proveedor --</option>
+      </select>
+
+      <label for="externalId">Identificador Externo:</label> 
+      <input type="text" id="externalId" name="externalId" required>
+
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <input type="text" id="nombre-producto" name="name" required>
+
+      <label for="descripcion">Descripción:</label>
+      <input type="text" id="descripcion-producto" name="description" required>
+
+      <label for="precio">Precio:</label>
+      <input type="number" id="precio-producto" name="price" required>
+
+      <label for="categoria">Categoría:</label>
+      <input type="text" id="categoria-producto" name="category" required>
+
       <button type="submit">Enviar</button>
     </form>
   </div>
 </div>
+
 
 
     <div class="form-group">

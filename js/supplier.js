@@ -74,62 +74,105 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch(error => console.error('Error fetching suppliers:', error));
 });
 
-// Mostrar modal Crear
+// Mostrar modal Crear Proveedor
 document.getElementById('crear').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'flex';
 });
 
-// Cerrar modal Crear
+// Cerrar modal Crear Proveedor
 document.getElementById('close-crear').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'none';
 });
 
-// Cerrar modal Crear al hacer clic fuera de él
-window.addEventListener('click', (event) => {
-  const modal = document.getElementById('modal');
-  if (event.target === modal) {
-      modal.style.display = 'none';
-  }
-});
-
-
-// Mostrar modal Actualizar
-document.getElementById('actualizar').addEventListener('click', () => {
+// Mostrar modal Crear Producto
+document.getElementById('crear-producto').addEventListener('click', () => {
+  cargarProveedores(); // Carga la lista de proveedores antes de mostrar el modal
   document.getElementById('modal-update').style.display = 'flex';
 });
 
-// Cerrar modal Actualizar
+// Cerrar modal Crear Producto
 document.getElementById('close-update').addEventListener('click', () => {
   document.getElementById('modal-update').style.display = 'none';
 });
 
-// Cerrar modal Actualizar al hacer clic fuera de él
-window.addEventListener('click', (event) => {
-  const modal = document.getElementById('modal-update');
-  if (event.target === modal) {
-      modal.style.display = 'none';
+// Función para cargar proveedores en el select
+async function cargarProveedores() {
+  try {
+    const response = await fetch('https://back-end-atime-for-lunch-git-main-jhonjaimefs-projects.vercel.app/supplier');
+    const proveedores = await response.json();
+    const select = document.getElementById('proveedor-producto');
+    select.innerHTML = '<option value="">-- Selecciona un Proveedor --</option>';
+    proveedores.data.forEach(proveedor => {
+      const option = document.createElement('option');
+      option.value = proveedor._id;
+      option.textContent = proveedor.name;
+      select.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Error al cargar los proveedores:', error);
+  }
+}
+
+// Registrar Proveedor
+document.getElementById('form-crear-proveedor').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const data = {
+    externalId: document.getElementById('externalId').value,
+    name: document.getElementById('nombre-proveedor').value,
+    phone: document.getElementById('telefono-proveedor').value,
+    email: document.getElementById('email-proveedor').value,
+    address: {
+      street: document.getElementById('direccion-calle').value,
+      city: document.getElementById('direccion-ciudad').value
+    }
+  };
+
+  console.log("datos", data);
+
+  try {
+    const response = await fetch('https://back-end-atime-for-lunch-git-main-jhonjaimefs-projects.vercel.app/supplier', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (response.ok) {
+      alert('Proveedor registrado correctamente.');
+      document.getElementById('modal').style.display = 'none';
+    } else {
+      console.error('Error al registrar el proveedor:', await response.text());
+    }
+  } catch (error) {
+    console.error('Error al registrar el proveedor:', error);
   }
 });
 
+// Registrar Producto
+document.getElementById('form-crear-producto').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const data = {
+    externalId:document.getElementById('externalId').value,
+    name: document.getElementById('nombre-producto').value,
+    description: document.getElementById('descripcion-producto').value,
+    price: parseFloat(document.getElementById('precio-producto').value),
+    category: document.getElementById('categoria-producto').value,
+    supplier: document.getElementById('proveedor-producto').value
+  };
 
-// Mostrar modal Eliminar
-document.getElementById('eliminar').addEventListener('click', () => {
-  document.getElementById('modal-delete').style.display = 'flex';
-});
+  console.log(data)
 
-// Cerrar modal Eliminar
-document.getElementById('close-delete').addEventListener('click', () => {
-  document.getElementById('modal-delete').style.display = 'none';
-});
-
-// Cerrar modal Eliminar al hacer clic fuera de él
-window.addEventListener('click', (event) => {
-  const modal = document.getElementById('modal-delete');
-  if (event.target === modal) {
-      modal.style.display = 'none';
+  try {
+    const response = await fetch(`https://back-end-atime-for-lunch-git-main-jhonjaimefs-projects.vercel.app/product/${data.supplier}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (response.ok) {
+      alert('Producto registrado correctamente.');
+      document.getElementById('modal-update').style.display = 'none';
+    } else {
+      console.error('Error al registrar el producto:', await response.text());
+    }
+  } catch (error) {
+    console.error('Error al registrar el producto:', error);
   }
 });
-
-
-
-
