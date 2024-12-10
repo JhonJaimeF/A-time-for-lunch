@@ -3,21 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicativo Responsivo</title>
-    <link rel="stylesheet" href="./css/stylesIndex.css">
+	<link rel="stylesheet" type="text/css" href="css/stylesIndex.css">
+
+    <title>Página Principal - Restaurante</title>
 </head>
 <body>
-    <img src="../img/Logo.png" alt="Logo" class="logo">
 
-    <div class="background-container">
-        <div class="overlay"></div>
-        <div class="content">
-            <h1>Bienvenido</h1>
-            <p>Esta es una página con una imagen de fondo responsiva y una capa de superposición.</p>
+    <main>
+        <div class="main-image">
+            <img src="img/Fondo.jpeg" alt="Imagen Principal del Restaurante">
+            <h1>Bienvenido a Nuestro Restaurante</h1>
             <a href="login.html">
-                 <button>Reserva Aquí</button> 
-            </a>
+                <button>Reserva Aquí</button> 
+           </a>
         </div>
-    </div>
+        <section id="principales-productos" class="product-section">
+            <h2>Principales Platos</h2>
+            <div class="product-cards">
+                <div class="product-card">
+                    <img src="img/1.png" alt="Paella Valenciana">
+                    <h3>Hamburguesa Deluxe</h3>
+                    <p>Una deliciosa Hamburguesa con carne de 180gr con verduras frescas y queso americano.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/cevipes.webp" alt="Ceviche de Pescado">
+                    <h3>Ceviche de Pescado</h3>
+                    <p>Pescado fresco marinado con limón, cebolla y cilantro.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/filete.jpg" alt="Filete Mignon">
+                    <h3>Filete Mignon</h3>
+                    <p>Un tierno filete de res acompañado de vegetales asados y puré de papas.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/2.jpeg" alt="Enchiladas Verdes">
+                    <h3>Enchiladas Verdes</h3>
+                    <p>Tortillas rellenas de pollo bañadas en salsa verde, acompañadas de arroz, frijoles y verduras.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/3.jpg" alt="Pizza Margarita">
+                    <h3>Pizza Margarita</h3>
+                    <p>Pizza tradicional con salsa de tomate, mozzarella y albahaca fresca.</p>
+                </div>
+                <div class="product-card">
+                    <img src="img/tacos-al-pastor-receta.webp" alt="Pizza Margarita">
+                    <h3>Tacos al pastor</h3>
+                    <p>Tacos con carne al pastor con aji y .</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Restaurante - Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
