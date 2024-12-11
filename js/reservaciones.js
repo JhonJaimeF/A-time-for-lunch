@@ -50,11 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Error al enviar la solicitud:', error);
         alert('Ocurrió un error al enviar los datos.');
       });
-  });
-
-
-
-const mesa = document.querySelector('#mesa').value.trim();
+ 
+  
+  const mesa = document.querySelector('#mesa').value.trim();
 const fechaReservacion = document.querySelector('#fechaReservacion').value;
 const numeroPersonas = parseInt(document.querySelector('#numeroPersonas').value, 10);
 const email = localStorage.getItem('email');
@@ -148,6 +146,8 @@ fetch('https://notificaciones-hc6i.onrender.com/send-email', {
   });
 
 
+  
+  });
 
 
 
