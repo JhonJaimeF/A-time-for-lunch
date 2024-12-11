@@ -121,6 +121,7 @@
             const userId = localStorage.getItem('userId'); // Obtener el ID del usuario desde localStorage
             if (!userId) {
               alert('No estás identificado. Por favor, inicia sesión.');
+                window.location.href = 'index.html';
               return;
             }
     
