@@ -10,29 +10,28 @@
 </head>
 <body>
 
-  <header>
-    <img class="logo" src="./img/logo.png" alt="Logo">
-    <button id="abrir" class="abrir-menu"><i class="bi bi-list"></i></button>
-    <nav class="nav" id="nav">
-        <button class="cerrar-menu" id="cerrar"><i class="bi bi-x"></i></button>
-        <ul class="nav-list">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="/inventary.html">Empleados</a></li>
-            <li><a href="/supplier.html">Inventario</a></li>
-            <li><a href="/financiero.html">Financiero</a></li>
-            <li><a href="/reserva.html">reservaciones</a></li>
-        </ul>
-    </nav>
-</header>
-  
+  <div class="sidebar">
+    <img class="logo" src="./img/LogoF.png" alt="Logo">
+    <ul>
+        <li><a href="/administrador.html">Inicio</a></li>
+        <li><a href="/inventary.html">Empleados</a></li>
+        <li><a href="/supplier.html">Inventario</a></li>
+        <li><a href="/financiero.html">Financiero</a></li>
+        <li><a href="/reserva.html">reservaciones</a></li>
+    </ul>
+</div>
 
-  <div class="container-fluid custom-padding" id="table">
-   <div class="title-container">
-  <h2>Supplier Data</h2>
-  <div class="btn-group">
-    <button id="crear">Crear Proveedor</button>
-  <button id="crear-producto">Crear Producto</button>
-  </div>
+<div class="content">
+    <div class="top-bar">
+        <div class="filter-container">
+            <input type="text" id="searchInput" placeholder="Buscar...">
+            <button id="">Filtrar</button>
+        </div>
+
+        <div class="action-buttons">
+            <button id="crear">Crear Proveedor</button>
+            <button id="crear-producto">Crear Producto</button>
+        </div>
 </div>
 
 <!-- Modal Crear Proveedor -->

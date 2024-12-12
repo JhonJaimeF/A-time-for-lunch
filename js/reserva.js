@@ -26,7 +26,7 @@ fetch('https://modulo-reservaciones.vercel.app/reservaciones')
         console.error('Error al cargar los datos:', error);
         alert('No se pudo cargar la información');
     });
-
+    
     // Mostrar modal Crear Proveedor
 document.getElementById('crear').addEventListener('click', () => {
     document.getElementById('modal').style.display = 'flex';
@@ -55,8 +55,6 @@ document.getElementById('crear').addEventListener('click', () => {
         altFormat: "F j, Y (H:i)"
     });
 });
-
-
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar el calendario con Flatpickr
     const today = new Date();
