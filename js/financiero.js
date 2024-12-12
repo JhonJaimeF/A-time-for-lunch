@@ -1,6 +1,6 @@
 window.onload = function() {
     // Limpia todo el contenido de localStorage al cargar la página
-    localStorage.clear();
+
 
     // Recupera el correo almacenado en localStorage
     const storedEmail = localStorage.getItem("email");
