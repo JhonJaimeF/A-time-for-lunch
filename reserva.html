@@ -35,7 +35,91 @@
             </div>
         </div>
 
+<<<<<<< HEAD
             <!-- Modal Crear -->
+=======
+    <style>
+        table {
+          width: 40%;
+          border-collapse: collapse;
+          margin: 20px auto;
+        }
+        th, td {
+          border: 1px solid #333;
+          padding: 8px;
+          text-align: center;
+        }
+        th {
+          background-color: #555;
+          color: white;
+        }
+        h1{
+            text-align: center;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Lista de Reservaciones</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre del Cliente</th>
+            <th>Mesa</th>
+            <th>Fecha de Reservación</th>
+            <th>Número de Personas</th>
+          </tr>
+        </thead>
+        <tbody id="tablaReservaciones">
+          <!-- Aquí se llenarán las filas dinámicamente con JavaScript -->
+        </tbody>
+      </table>
+    
+      <script>
+        // Función para obtener datos de la API y mostrarlos en la tabla filtrando por el idCliente
+        async function obtenerReservaciones() {
+          try {
+            const userId = localStorage.getItem('userId'); // Obtener el ID del usuario desde localStorage
+            if (!userId) {
+              alert('No estás identificado. Por favor, inicia sesión.');
+                window.location.href = 'index.html';
+              return;
+            }
+    
+            const response = await fetch('https://modulo-reservaciones.vercel.app/reservaciones');
+            const resultado = await response.json();
+            const datos = resultado.data;
+    
+            const contenedorTabla = document.getElementById('tablaReservaciones');
+            contenedorTabla.innerHTML = ''; // Limpiar la tabla antes de llenarla
+    
+            // Filtrar los datos para mostrar solo aquellos con el idCliente que coincide con el localStorage
+            const datosFiltrados = datos.filter(reservacion => reservacion.idCliente === userId);
+    
+            // Recorrer los datos filtrados y agregarlos dinámicamente a la tabla
+            datosFiltrados.forEach(reservacion => {
+              const fila = document.createElement('tr');
+              
+              fila.innerHTML = `
+                <td>${reservacion.nameCliente}</td>
+                <td>${reservacion.mesa}</td>
+                <td>${new Date(reservacion.fechaReservacion).toLocaleString()}</td>
+                <td>${reservacion.numeroPersonas}</td>
+              `;
+    
+              contenedorTabla.appendChild(fila);
+            });
+          } catch (error) {
+            console.error('Error al cargar los datos:', error);
+            alert('No se pudo cargar la información');
+          }
+        }
+    
+        // Llamar a la función al cargar la página
+        window.onload = obtenerReservaciones;
+      </script>
+   
+    <script src="./js/reservaciones.js"></script>
+>>>>>>> dc81bed51dadfc67f70a205e3cb1795266939205
 
             <div id="modal" class="modal">
     <div class="modal-content">
