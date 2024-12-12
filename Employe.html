@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/stylesNab.css">
+    <link rel="stylesheet" href="./css/styles-financiero.css">
+    <title>Gestion Empleados</title>
+    <style>
+        .iframe-container {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+        iframe {
+            width: 79%;
+            height: 800px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img class="logo" src="./img/LogoF.png" alt="Logo">
+    <ul>
+        <li><a href="/reserva.html">Reservaciones</a></li>
+        <li><a href="#">Empleados</a></li>
+        <li><a href="/supplier.html">Inventario</a></li>
+        <li><a href="/financiero.html">Financiero</a></li>
+    </ul>
+  </div>
+
+  <div class="iframe-container">
+    <iframe src="https://gestion-empleados-pnfc.onrender.com/" 
+            sandbox="allow-same-origin allow-forms allow-scripts"></iframe>
+  </div>
+
+  <!-- Solución para bloquear comportamientos automáticos no permitidos en cross-origin -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const iframe = document.querySelector('iframe');
+      iframe.addEventListener('load', function () {
+        try {
+          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          if (iframeDoc) {
+            const input = iframeDoc.querySelector('input');
+            if (input) {
+              input.blur(); // Eliminar cualquier intento automático de autofoco
+            }
+          }
+        } catch (error) {
+          console.warn('No se pudo acceder a los elementos internos de cross-origin.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

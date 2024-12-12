@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('modal');
-  const openModalButton = document.getElementById('openModalButton');
+  const openModalButton = document.getElementById('crear');
   const closeModal = document.getElementById('close-crear');
-  const tableBody = document.querySelector('#transactionTable tbody');
+  const tableBody = document.querySelector('#contenidoTablaReservaciones');
   const form = document.querySelector('form');
 
   // Mostrar el modal
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error('Error al cargar transacciones:', error);
       }
   }
-
+  
   // Renderizar la tabla
   function renderTable(transactions) {
       tableBody.innerHTML = '';

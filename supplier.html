@@ -6,18 +6,18 @@
   <title>Supplier Data</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/stylesSupplier.css" rel="stylesheet">
-  <link rel="stylesheet" href="./css/stylesAdmin-Nab.css"> 
+  <link href="/css/stylesNab.css" rel="stylesheet">
 </head>
 <body>
 
   <div class="sidebar">
     <img class="logo" src="./img/LogoF.png" alt="Logo">
     <ul>
-        <li><a href="/administrador.html">Inicio</a></li>
-        <li><a href="/inventary.html">Empleados</a></li>
-        <li><a href="/supplier.html">Inventario</a></li>
+      <li><a href="/reserva.html">Reservaciones</a></li>
+        <li><a href="/Employe.html">Empleados</a></li>
+        <li><a href="#">Inventario</a></li>
         <li><a href="/financiero.html">Financiero</a></li>
-        <li><a href="/reserva.html">reservaciones</a></li>
+       
     </ul>
 </div>
 
@@ -41,26 +41,30 @@
     <h2>Formulario Crear Proveedor</h2>
     <form id="form-crear-proveedor">
 
-      <label for="externalId">Identificador:</label>
-      <input type="text" id="externalId" name="externalId" required>
+      <div class="form-left">
+        <label for="externalId">Identificador:</label>
+      <input type="text" id="externalId" name="externalId" required class="form-control">
 
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre-proveedor" name="name" required>
+      <input type="text" id="nombre-proveedor" name="name" required class="form-control">
 
       <label for="telefono">Teléfono:</label>
-      <input type="text" id="telefono-proveedor" name="phone" required>
+      <input type="text" id="telefono-proveedor" name="phone" required class="form-control">
+      </div>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email-proveedor" name="email" required>
-
-      <label for="direccion-calle">Calle:</label>
-      <input type="text" id="direccion-calle" name="street" required>
-
-      <label for="direccion-ciudad">Ciudad:</label>
-      <input type="text" id="direccion-ciudad" name="city" required>
-
-      <button type="submit">Enviar</button>
+      <div class="form-right">
+        <label for="email">Email:</label>
+        <input type="email" id="email-proveedor" name="email" required class="form-control">
+  
+        <label for="direccion-calle">Calle:</label>
+        <input type="text" id="direccion-calle" name="street" required class="form-control">
+  
+        <label for="direccion-ciudad">Ciudad:</label>
+        <input type="text" id="direccion-ciudad" name="city" required class="form-control">
+      </div>     
     </form>
+
+     <button id="btnSend" type="submit">Enviar</button>
   </div>
 </div>
 
@@ -70,28 +74,35 @@
     <span class="close" id="close-update">&times;</span>
     <h2>Formulario Crear Producto</h2>
     <form id="form-crear-producto">
-      <label for="proveedor">Proveedor:</label>
-      <select id="proveedor-producto" name="supplier" required>
-        <option value="">-- Selecciona un Proveedor --</option>
-      </select>
+  
+      <div class="form-left">
+        <label for="proveedor">Proveedor:</label>
+        <select id="proveedor-producto" name="supplier" required>
+          <option value="">-- Selecciona un Proveedor --</option>
+        </select>
+  
+        <label for="externalId">Identificador Externo:</label> 
+        <input type="text" id="externalId" name="externalId"  class="form-control"  required>
+  
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre-producto" name="name" required>
+      </div>
 
-      <label for="externalId">Identificador Externo:</label> 
-      <input type="text" id="externalId" name="externalId" required>
+      <div class="form-rigth">
+        <label for="descripcion">Descripción:</label>
+      <input type="text" id="descripcion-producto" name="description" class="form-control"  required>
 
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre-producto" name="name" required>
-
-      <label for="descripcion">Descripción:</label>
-      <input type="text" id="descripcion-producto" name="description" required>
-
-      <label for="precio">Precio:</label>
-      <input type="number" id="precio-producto" name="price" required>
+        <label for="precio">Precio:</label>
+      <input type="number" id="precio-producto" name="price" class="form-control"  required>
 
       <label for="categoria">Categoría:</label>
-      <input type="text" id="categoria-producto" name="category" required>
+      <input type="text" id="categoria-producto" name="category"  class="form-control" required>
 
-      <button type="submit">Enviar</button>
+      </div>
+      
     </form>
+
+    <button id="btnSend" type="submit">Enviar</button>
   </div>
 </div>
 
@@ -138,9 +149,7 @@
     </table>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
   <script src="./js/adminNav.js"></script>
   <script src="/js/supplier.js"></script>
 </body>

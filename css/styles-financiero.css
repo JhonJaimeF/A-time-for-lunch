@@ -1,13 +1,65 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.actions img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: transform 0.2s ease;
+}
+
+.actions img:hover {
+    transform: scale(1.2);
+}
+
+.action-buttons { 
+    text-align: center; 
+    margin-top: 20px; 
+} 
+.action-buttons button { 
+    padding: 10px 20px; 
+    font-size: 16px; 
+}
+
+
 .modal {
-    display: none;
+    display: none; /* Ocultar por defecto */
     position: fixed;
-    z-index: 1;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.7); /* Fondo difuminado */
+    backdrop-filter: blur(5px); /* Efecto de difuminado */
+    z-index: 1000;
     justify-content: center;
     align-items: center;
 }
@@ -17,7 +69,7 @@
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 15%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
