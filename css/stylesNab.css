@@ -1,10 +1,11 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    background-color: #f3f4f6;
+    background-color: rgba(243, 244, 246, 0.84);
     background-blend-mode: overlay;
     color: #333;
     display: flex;
+    background-image: url("../img/Fondo.png");
     
 }
 
@@ -14,12 +15,17 @@ body {
 
 .sidebar {
     width: 250px;
-    background-color: #007bff;
+    background: rgb(0,82,169);
+    background: linear-gradient(0deg, rgba(0,82,169,1) 1%, rgba(0,123,255,1) 100%);
     color: white;
     height: 100vh;
     padding: 20px;
     box-sizing: border-box;
     position: fixed;
+    
+    -webkit-box-shadow: inset 0px 9px 33px 9px rgba(0,0,0,0.3);
+    -moz-box-shadow: inset 0px 9px 33px 9px rgba(0,0,0,0.3);
+    box-shadow: inset 0px 9px 33px 9px rgba(0,0,0,0.3);
 }
 
 .sidebar h2 {
