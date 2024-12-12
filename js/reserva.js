@@ -1,3 +1,25 @@
+    // Redirigir a la página de inicio de sesión si no hay token
+        if (!localStorage.getItem('authToken')) {
+            window.location.href = './login.html'; // Redirige al inicio de sesión
+        }
+
+        // Prevenir navegación hacia atrás
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function () {
+            window.location.reload();
+        };
+
+        // Manejo de cierre de sesión
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            // Limpiar sesión o almacenamiento local
+            sessionStorage.clear();
+            localStorage.clear();
+
+            // Redirigir al usuario
+            window.location.href = './login.html';
+        });
+
+
 window.onload = function() {
     // Limpia todo el contenido de localStorage al cargar la página
 
