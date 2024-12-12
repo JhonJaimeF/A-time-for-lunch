@@ -27,6 +27,7 @@ document.querySelector("#btnSend").addEventListener('click', () => {
                 if (responseData.data.userId) {
                     localStorage.setItem('userId', responseData.data.userId);
                     localStorage.setItem('email', responseData.data.email);
+                     localStorage.setItem('email', responseData.data.name);
                     mostrarUserId(); // Llama al método para mostrar el ID en la consola
                 }
                 
