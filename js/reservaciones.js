@@ -1,18 +1,23 @@
-window.onload = function() {
-    // Limpia todo el contenido de localStorage al cargar la página
+    // Redirigir a la página de inicio de sesión si no hay token y prevenir navegación hacia atrás
+        if (!localStorage.getItem('authToken')) {
+            window.location.href = './login.html'; // Redirige al inicio de sesión
+        }
 
+        // Manejo de cierre de sesión
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            // Limpiar sesión o almacenamiento local
+            sessionStorage.clear();
+            localStorage.clear();
 
-    // Recupera el correo almacenado en localStorage
-    const storedEmail = localStorage.getItem("email");
+            // Redirigir al usuario
+            window.location.href = './login.html';
 
-
-     if (!storedEmail) {
-        // Redirige a la página de login si el correo es nulo o vacío
-        window.location.href = "login.html";
-    }
-};
-
-
+            // Deshabilitar botón de retroceso
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            };
+        });
 
 
 
