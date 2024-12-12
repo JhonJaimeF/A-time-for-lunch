@@ -55,32 +55,81 @@ tr:nth-child(even) {
 }
 
 .modal-content { 
-    background: rgba(226, 241, 254, 0.448); 
+    background: rgba(226, 241, 254, 0.729); 
     padding: 20px; 
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    width: 50%; /* Ancho del formulario */ 
-    height: 40vh;
+    width: 90%; /* Ajustar para pantallas pequeñas */
+    max-width: 600px; /* Limitar tamaño en pantallas grandes */
+    height: auto; /* Ajuste automático */
     text-align: left; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
+    
 } 
 
 .form-left, .form-right { 
     display: flex; 
     flex-direction: column; 
-    width: 48%; /* Ajusta el ancho según sea necesario */ 
-} 
-.form-control{
-    height: 5vh;
-    margin-top: 10px;
-    border: none;
-    border-radius: 6px;
+    gap: 15px; /* Espaciado entre elementos */
+    width: 90%; /* Mantener márgenes internos */
+    max-width: 45%; /* Ajustar ancho en dispositivos grandes */
+    margin: 10px; /* Separar columnas */
+    
 }
 
+form {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que las columnas se ajusten */
+    justify-content: space-between; /* Separación uniforme */
+    gap: 10px; /* Espaciado entre columnas */
+    width: 100%;
+    
+}
 
-#btnSend{
-    margin: auto;
+.form-control {
+    height: 5vh;
+    max-width: 100%; /* Asegurar que no excedan el contenedor */
+    margin-top: 5px;
+    padding: 10px; /* Mejorar usabilidad */
+    border:none; /* Resaltar bordes */
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+#btnSend ,#btnSend-product {
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .form-left, .form-right {
+        max-width: 100%; /* Tomar el 100% del ancho en pantallas pequeñas */
+    }
+
+    form {
+        justify-content: center; /* Centrar contenido */
+    }
+
+    .form-control {
+        font-size: 14px; /* Ajustar texto para dispositivos pequeños */
+    }
+}
+
+.error-mensaje {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+input:invalid, select:invalid {
+    border-color: red;
 }
 
