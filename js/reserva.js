@@ -1,15 +1,17 @@
-// Borra todo el contenido de localStorage cuando se carga la página
 window.onload = function() {
+    // Limpia todo el contenido de localStorage al cargar la página
     localStorage.clear();
 
-    // Verifica si el valor de localStorage corresponde al correo esperado o está vacío/nulo
+    // Recupera el correo almacenado en localStorage
     const storedEmail = localStorage.getItem("email");
 
-    if (!storedEmail || storedEmail !== "attimeforlunch@gmail.com") {
-        // Redirige a la página de login si el correo no coincide, es nulo o está vacío
+    // Verifica si el correo es nulo, vacío o no coincide con el autorizado
+    if (storedEmail !== "attimeforlunch@gmail.com") {
+        // Redirige a la página de login si no está autorizado
         window.location.href = "login.html";
     }
 };
+
 
 fetch('https://modulo-reservaciones.vercel.app/reservaciones')
     .then(response => response.json())
