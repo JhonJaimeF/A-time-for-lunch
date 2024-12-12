@@ -1,3 +1,21 @@
+window.onload = function() {
+    // Limpia todo el contenido de localStorage al cargar la página
+
+
+    // Recupera el correo almacenado en localStorage
+    const storedEmail = localStorage.getItem("email");
+
+
+     if (!storedEmail) {
+        // Redirige a la página de login si el correo es nulo o vacío
+        window.location.href = "login.html";
+    }
+};
+
+
+
+
+
 fetch('https://modulo-reservaciones.vercel.app/reservaciones')
     .then(response => response.json())
     .then(reservas => {
