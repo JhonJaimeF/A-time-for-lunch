@@ -1,28 +1,50 @@
+window.onload = function() {
+    // Limpia todo el contenido de localStorage al cargar la página
+
+
+    // Recupera el correo almacenado en localStorage
+    const storedEmail = localStorage.getItem("email");
+
+
+     if (!storedEmail) {
+        // Redirige a la página de login si el correo es nulo o vacío
+        window.location.href = "login.html";
+    }
+};
+
+
+
+
+
 fetch('https://modulo-reservaciones.vercel.app/reservaciones')
     .then(response => response.json())
     .then(reservas => {
         const datos = reservas.data;
 
+        // Obtener el userId desde localStorage
+        const userId = localStorage.getItem('userId');
+
+        // Filtrar las reservas para el usuario actual
+        const reservasFiltradas = datos.filter(reservacion => reservacion.idCliente === userId);
+
         const contenedorTabla = document.getElementById('contenidoTablaReservaciones');
         contenedorTabla.innerHTML = '';
 
-        console.log(datos);
+        console.log(reservasFiltradas);
 
-        const emailUsuario = localStorage.getItem('email');
-
-        datos.forEach(reservacion => {
-            if (reservacion.emailCliente === emailUsuario) {
-                const fila = document.createElement('tr');
-                fila.innerHTML = `
-                    <td>${reservacion.mesa}</td>
-                    <td>${new Date(reservacion.fechaReservacion).toLocaleString()}</td>
-                    <td>${reservacion.numeroPersonas}</td>
-                    <td>
-                        <button class="btn btn-warning btn-sm" onclick="editarReservacion('${reservacion.id}')"> <i class="fas fa-edit"></i> </button> <button class="btn btn-danger btn-sm" onclick="eliminarReservacion('${reservacion.id}')"> <i class="fas fa-trash-alt"></i> </button>
-                    </td>
-                `;
-                contenedorTabla.appendChild(fila);
-            }
+        reservasFiltradas.forEach(reservacion => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${reservacion.nameCliente}</td>
+                <td>${reservacion.mesa}</td>
+                <td>${new Date(reservacion.fechaReservacion).toLocaleString()}</td>
+                <td>${reservacion.numeroPersonas}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" onclick="editarReservacion('${reservacion.id}')"> <i class="fas fa-edit"></i> </button> 
+                    <button class="btn btn-danger btn-sm" onclick="eliminarReservacion('${reservacion.id}')"> <i class="fas fa-trash-alt"></i> </button>
+                </td>
+            `;
+            contenedorTabla.appendChild(fila);
         });
     })
     .catch(error => {

@@ -21,7 +21,7 @@ document.querySelector("#btnSend").addEventListener('click', () => {
         if (responseData.message) {
             loader.style.display = 'none';
 
-            alert(responseData.message); // Muestra el mensaje de bienvenida
+
             if (responseData.data && responseData.data.token) {
                 localStorage.setItem('authToken', responseData.data.token); // Almacena el token
                 if (responseData.data.userId) {

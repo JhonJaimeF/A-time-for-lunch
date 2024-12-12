@@ -1,3 +1,18 @@
+window.onload = function() {
+    // Limpia todo el contenido de localStorage al cargar la página
+ 
+    // Recupera el correo almacenado en localStorage
+    const storedEmail = localStorage.getItem("email");
+
+    // Verifica si el correo es nulo, vacío o no coincide con el autorizado
+    if (storedEmail !== "attimeforlunch@gmail.com") {
+        // Redirige a la página de login si no está autorizado
+        window.location.href = "login.html";
+    }
+};
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
   const supplierDataUrl = "https://back-end-atime-for-lunch-git-main-jhonjaimefs-projects.vercel.app/supplier"; // URI para los proveedores
   const supplierSelect = document.getElementById('supplierSelect');
