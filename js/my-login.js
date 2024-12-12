@@ -26,6 +26,7 @@ document.querySelector("#btnSend").addEventListener('click', () => {
                 localStorage.setItem('authToken', responseData.data.token); // Almacena el token
                 if (responseData.data.userId) {
                     localStorage.setItem('userId', responseData.data.userId);
+                    localStorage.setItem('email', responseData.data.email);
                     mostrarUserId(); // Llama al método para mostrar el ID en la consola
                 }
                 
