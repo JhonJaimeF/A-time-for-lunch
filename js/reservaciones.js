@@ -1,7 +1,13 @@
-    // Redirigir a la página de inicio de sesión si no hay token y prevenir navegación hacia atrás
+    // Redirigir a la página de inicio de sesión si no hay token
         if (!localStorage.getItem('authToken')) {
             window.location.href = './login.html'; // Redirige al inicio de sesión
         }
+
+        // Prevenir navegación hacia atrás
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function () {
+            window.location.reload();
+        };
 
         // Manejo de cierre de sesión
         document.getElementById('logoutButton').addEventListener('click', () => {
@@ -11,14 +17,7 @@
 
             // Redirigir al usuario
             window.location.href = './login.html';
-
-            // Deshabilitar botón de retroceso
-            window.history.pushState(null, "", window.location.href);
-            window.onpopstate = function () {
-                window.history.pushState(null, "", window.location.href);
-            };
         });
-
 
 
 fetch('https://modulo-reservaciones.vercel.app/reservaciones')
