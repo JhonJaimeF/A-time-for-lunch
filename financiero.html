@@ -1,16 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles-financiero.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/stylesAdmin-Nab.css">
-  
-   
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="./css/styles-Recerva.css">
+    <link rel="stylesheet" href="./css/stylesNab.css">
+    <title>Transacciones</title>
+</head>
+<body>
+    <div class="sidebar">
+        <img class="logo" src="./img/LogoF.png" alt="Logo">
+        <ul>
+            <li><a href="/reserva.html">Reservaciones</a></li>
+            <li><a href="/Employe.html">Empleados</a></li>
+            <li><a href="/supplier.html">Inventario</a></li>
+            <li><a href="/financiero.html">Financiero</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- Barra superior -->
+        <div class="top-bar">
+            <button id="logoutButton" class="logout">Cerrar Sesión</button>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="main-content container mt-4">
+            <h1>Transacciones Financieras del Restaurante</h1>
+            <button id="openModalButton" class="btn btn-success mb-3">Registrar Transacción</button>
+            <table class="table table-hover" id="transactionTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripción</th>
+                        <th>Valor</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas generadas dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Registrar/Editar Transacción</h5>
+                        <button id="close-crear" class="close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="transactionForm">
+                            <input 
+                                type="number" 
+                                name="id" 
+                                placeholder="ID" 
+                                min="1" 
+                                step="1" 
+                                title="El ID debe ser un número positivo." 
+                                required 
+                            />
+                            <input 
+                                type="text" 
+                                name="description" 
+                                placeholder="Descripción" 
+                                required 
+                            />
+                            <input 
+                                type="number" 
+                                name="value" 
+                                placeholder="Valor" 
+                                min="0" 
+                                title="El valor no puede ser negativo." 
+                                required 
+                            />
+                            <button type="submit">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+         <style>
     body {
       background-color: #f4f6f9;
       font-family: 'Roboto', sans-serif;
@@ -177,89 +255,7 @@
       }
   }
   </style>
- 
-  <title>Gestión Financiera del Restaurante</title>
-
-</head>
-<body>
-
-    <header>
-        <img class="logo" src="../img/logo.png" alt="Logo">
-        <button id="abrir" class="abrir-menu"><i class="bi bi-list"></i></button>
-        <nav class="nav" id="nav">
-            <button class="cerrar-menu" id="cerrar"><i class="bi bi-x"></i></button>
-            <ul class="nav-list">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="/inventary.html">Empleados</a></li>
-                <li><a href="/supplier.html">Inventario</a></li>
-                <li><a href="/financiero.html">Financiero</a></li>
-                <li><a href="/reserva.html">reservaciones</a></li>
-            </ul>
-        </nav>
-    </header>
-
-  <div class="container mt-4">
-    <h1>Transacciones Financieras del Restaurante</h1>
-    <button id="openModalButton" class="btn btn-success mb-3">Registrar Transacción</button>
-    <table class="table table-hover" id="transactionTable">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Descripción</th>
-          <th>Valor</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Filas generadas dinámicamente -->
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Modal -->
-  <div id="modal" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Registrar/Editar Transacción</h5>
-          <button id="close-crear" class="close">&times;</button>
-        </div>
-        <div class="modal-body">
-
-          <form id="transactionForm">
-            <input 
-              type="number" 
-              name="id" 
-              placeholder="ID" 
-              min="1" 
-              step="1" 
-              title="El ID debe ser un número positivo." 
-              required 
-            />
-            <input 
-              type="text" 
-              name="description" 
-              placeholder="Descripción" 
-              required 
-            />
-            <input 
-              type="number" 
-              name="value" 
-              placeholder="Valor" 
-              min="0" 
-              title="El valor no puede ser negativo." 
-              required 
-            />
-            <button type="submit">Guardar</button>
-          </form>
-          
-          
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="financiero.js"></script>
+    </style>
+    <script src="./js/financiero.js"></script>
 </body>
 </html>

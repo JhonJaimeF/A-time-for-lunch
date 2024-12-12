@@ -1,19 +1,23 @@
-window.onload = function() {
-    // Limpia todo el contenido de localStorage al cargar la página
+    // Redirigir a la página de inicio de sesión si no hay token
+        if (!localStorage.getItem('authToken')) {
+            window.location.href = './login.html'; // Redirige al inicio de sesión
+        }
 
+        // Prevenir navegación hacia atrás
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function () {
+            window.location.reload();
+        };
 
-    // Recupera el correo almacenado en localStorage
-    const storedEmail = localStorage.getItem("email");
+        // Manejo de cierre de sesión
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            // Limpiar sesión o almacenamiento local
+            sessionStorage.clear();
+            localStorage.clear();
 
-
-     if (!storedEmail) {
-        // Redirige a la página de login si el correo es nulo o vacío
-        window.location.href = "login.html";
-    }
-};
-
-
-
+            // Redirigir al usuario
+            window.location.href = './login.html';
+        });
 
 
 fetch('https://modulo-reservaciones.vercel.app/reservaciones')
