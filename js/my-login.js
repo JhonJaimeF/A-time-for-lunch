@@ -32,13 +32,14 @@ document.querySelector("#btnSend").addEventListener('click', () => {
                 }
                 
                 if (email === 'attimeforlunch@gmail.com') {
+                      fetch('https://api.ipify.org?format=json')
+                     .then(response => response.json())
+  .then(data => console.log(data.ip));
                     window.location.href = 'reserva.html';
                     return; // Detenemos la ejecución del resto del código
                 } else {
                     window.location.href = 'reservaCliente.html'; 
-                           fetch('https://api.ipify.org?format=json')
-                     .then(response => response.json())
-  .then(data => console.log(data.ip));
+                         
                     
                     // Redirige a la página protegida
                 } 
