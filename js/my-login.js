@@ -32,7 +32,22 @@ document.querySelector("#btnSend").addEventListener('click', () => {
                 }
                 
                 if (email === 'attimeforlunch@gmail.com') {
-                    window.location.href = 'reserva.html';
+
+
+
+fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      alert(`Tu dirección IP es: ${data.ip}`);
+      localStorage.setItem('ip', data.ip); // Guardar la IP en localStorage
+       window.location.href = 'reserva.html'; // Redirigir (ajusta esta ruta según tu app)
+    })
+    .catch(error => {
+      console.error('Error al obtener la IP:', error);
+      alert('No se pudo obtener la dirección IP.');
+    });
+                    
+                  
                     return; // Detenemos la ejecución del resto del código
                 } else {
                     window.location.href = 'reservaCliente.html'; // Redirige a la página protegida
