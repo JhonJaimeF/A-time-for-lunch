@@ -36,7 +36,8 @@ document.querySelector("#btnSend").addEventListener('click', () => {
   .then(response => response.json())
   .then(data => {
     alert(`Tu dirección IP es: ${data.ip}`);
-      return
+      localStorage.setItem('ip', data.ip);
+       window.location.href = 'reserva.html';
   })
   .catch(error => {
     console.error('Error al obtener la IP:', error);
