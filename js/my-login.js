@@ -36,6 +36,7 @@ document.querySelector("#btnSend").addEventListener('click', () => {
   .then(response => response.json())
   .then(data => {
     alert(`Tu dirección IP es: ${data.ip}`);
+      return
   })
   .catch(error => {
     console.error('Error al obtener la IP:', error);
