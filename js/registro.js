@@ -57,10 +57,11 @@ document.querySelector("#btnSendR").addEventListener('click', (event) => {
                 const header = document.querySelector('.header');
                 header.style.display = 'block';
 
-                // ✅ Enviar log de acción
-                enviarLog(emailR, "registro");
+                
 
                 setTimeout(() => {
+                    // ✅ Enviar log de acción
+                enviarLog(emailR, "registro");
                     window.location.href = 'index.html';
                 }, 2000);
             } else {
