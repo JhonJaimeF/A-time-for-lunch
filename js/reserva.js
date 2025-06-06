@@ -9,15 +9,34 @@
             window.location.reload();
         };
 
-        // Manejo de cierre de sesión
-        document.getElementById('logoutButton').addEventListener('click', () => {
-            // Limpiar sesión o almacenamiento local
-            sessionStorage.clear();
-            localStorage.clear();
+     document.getElementById('logoutButton').addEventListener('click', () => {
+    // Registrar la acción de cierre de sesión
+    fetch('https://logs-d4hu.onrender.com/logs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            correo: localStorage.getItem('email'),
+            accion: 'Cierre de sesión'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Log de cierre de sesión registrado:', data);
+    })
+    .catch(error => {
+        console.error('Error al registrar el log de cierre de sesión:', error);
+    })
+    .finally(() => {
+        // Limpiar sesión o almacenamiento local
+        sessionStorage.clear();
+        localStorage.clear();
 
-            // Redirigir al usuario
-            window.location.href = './login.html';
-        });
+        // Redirigir al usuario
+        window.location.href = './login.html';
+    });
+});
 
 
 window.onload = function() {
@@ -205,6 +224,23 @@ document.addEventListener('DOMContentLoaded', function() {
               throw new Error('Error al enviar el correo: ' + response.statusText);
             }
             alert("Reserva confirmada y correo enviado con éxito.");
+               fetch('https://logs-d4hu.onrender.com/logs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    correo: localStorage.getItem('email'),
+    accion: `Reserva de mesa, fecha de reservación: ${new Date(fechaReservacion).toISOString()}, número de personas: ${numeroPersonas}`
+  })
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Log registrado:', data);
+})
+.catch(error => {
+  console.error('Error al registrar el log:', error);
+});
             window.location.reload(); // Recargar la página después de que todo se complete
           })
           .catch(error => {
