@@ -9,16 +9,34 @@
             window.location.reload();
         };
 
-        // Manejo de cierre de sesión
-        document.getElementById('logoutButton').addEventListener('click', () => {
-            // Limpiar sesión o almacenamiento local
-            sessionStorage.clear();
-            localStorage.clear();
+   document.getElementById('logoutButton').addEventListener('click', () => {
+    // Registrar la acción de cierre de sesión
+    fetch('https://logs-d4hu.onrender.com/logs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            correo: localStorage.getItem('email'),
+            accion: 'Cierre de sesión'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Log de cierre de sesión registrado:', data);
+    })
+    .catch(error => {
+        console.error('Error al registrar el log de cierre de sesión:', error);
+    })
+    .finally(() => {
+        // Limpiar sesión o almacenamiento local
+        sessionStorage.clear();
+        localStorage.clear();
 
-            // Redirigir al usuario
-            window.location.href = './login.html';
-        });
-
+        // Redirigir al usuario
+        window.location.href = './login.html';
+    });
+});
 
 fetch('https://modulo-reservaciones.vercel.app/reservaciones')
     .then(response => response.json())
