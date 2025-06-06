@@ -1,29 +1,32 @@
 document.querySelector("#btnSendR").addEventListener('click', (event) => {
     event.preventDefault();
 
+    // Ocultar mensajes de error previos
     document.getElementById('errorMessageName').style.display = 'none';
     document.getElementById('errorMessageEmail').style.display = 'none';
     document.getElementById('errorMessageEmailR').style.display = 'none';
     document.getElementById('errorMessagePassword').style.display = 'none';
 
+    // Obtener valores del formulario
     const nameR = document.querySelector('#nameR').value;
     const emailR = document.querySelector('#emailR').value;
     const passwordR = document.querySelector('#passwordR').value;
+    const loader = document.getElementById('loader');
 
     let isValid = true;
 
     if (!validateName(nameR)) {
-        errorMessageName.style.display = 'flex';
+        document.getElementById('errorMessageName').style.display = 'flex';
         isValid = false;
     }
 
     if (!validateEmail(emailR)) {
-        errorMessageEmail.style.display = 'flex';
+        document.getElementById('errorMessageEmail').style.display = 'flex';
         isValid = false;
     }
 
     if (!validatePassword(passwordR)) {
-        errorMessagePassword.style.display = 'flex';
+        document.getElementById('errorMessagePassword').style.display = 'flex';
         isValid = false;
     }
 
@@ -48,23 +51,25 @@ document.querySelector("#btnSendR").addEventListener('click', (event) => {
         .then(resp => resp.json())
         .then(responseData => {
             loader.style.display = 'none';
+            console.log("Registro response:", responseData); // 🔍 LOG DE RESPUESTA
+
             if (responseData.error === null) {
                 const header = document.querySelector('.header');
                 header.style.display = 'block';
 
-                // 👉 Enviar log de acción
+                // ✅ Enviar log de acción
                 enviarLog(emailR, "registro");
 
-                setTimeout(function () {
+                setTimeout(() => {
                     window.location.href = 'index.html';
                 }, 2000);
             } else {
-                errorMessageEmailR.style.display = 'flex';
+                document.getElementById('errorMessageEmailR').style.display = 'flex';
             }
         })
         .catch(err => {
             loader.style.display = 'none';
-            console.error(err);
+            console.error("Error en registro:", err);
             alert("Ocurrió un error. Intenta nuevamente.");
         });
     }
@@ -84,9 +89,11 @@ function enviarLog(correo, accion) {
         body: JSON.stringify(logData)
     })
     .then(resp => {
-        if (!resp.ok) {
-            console.warn(`No se pudo enviar log de acción: ${accion}`);
-        }
+        console.log("Estado del log:", resp.status);
+        return resp.text();
+    })
+    .then(data => {
+        console.log("Respuesta del log:", data);
     })
     .catch(err => {
         console.warn(`Error enviando log de acción (${accion}):`, err);
