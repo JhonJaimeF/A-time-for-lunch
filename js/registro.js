@@ -1,115 +1,121 @@
+<script>
 document.querySelector("#btnSendR").addEventListener('click', (event) => {
-    event.preventDefault(); // Previene el envío del formulario
+    event.preventDefault();
 
-	document.getElementById('errorMessageName').style.display = 'none';
+    document.getElementById('errorMessageName').style.display = 'none';
     document.getElementById('errorMessageEmail').style.display = 'none';
-	document.getElementById('errorMessageEmailR').style.display = 'none';
+    document.getElementById('errorMessageEmailR').style.display = 'none';
     document.getElementById('errorMessagePassword').style.display = 'none';
 
-    const nameR = document.querySelector('#nameR').value; 
-    const emailR = document.querySelector('#emailR').value; 
-    const passwordR = document.querySelector('#passwordR').value; 
+    const nameR = document.querySelector('#nameR').value;
+    const emailR = document.querySelector('#emailR').value;
+    const passwordR = document.querySelector('#passwordR').value;
 
-	let isValid = true;
+    let isValid = true;
 
-if (!validateName(nameR)) {
-    errorMessageName.style.display = 'flex';
-    isValid = false; // Cambia a false si hay un error en el nombre
-}
+    if (!validateName(nameR)) {
+        errorMessageName.style.display = 'flex';
+        isValid = false;
+    }
 
-if (!validateEmail(emailR)) {
-    errorMessageEmail.style.display = 'flex';
-    isValid = false; // Cambia a false si hay un error en el email
-}
+    if (!validateEmail(emailR)) {
+        errorMessageEmail.style.display = 'flex';
+        isValid = false;
+    }
 
-if (!validatePassword(passwordR)) {
-    errorMessagePassword.style.display = 'flex';    
-    isValid = false; // Cambia a false si hay un error en la contraseña
-}
+    if (!validatePassword(passwordR)) {
+        errorMessagePassword.style.display = 'flex';
+        isValid = false;
+    }
 
+    if (isValid) {
+        const data = {
+            name: nameR,
+            email: emailR,
+            password: passwordR
+        };
 
-if (isValid) {
+        loader.style.display = 'flex';
 
-    const data = { 
-        name: nameR, 
-        email: emailR, 
-        password: passwordR 
-    }; 
+        const URL = "https://api-users-cors.onrender.com/api/user/register";
 
-loader.style.display = 'flex';
+        fetch(URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        })
+        .then(resp => resp.json())
+        .then(responseData => {
+            loader.style.display = 'none';
+            if (responseData.error === null) {
+                const header = document.querySelector('.header');
+                header.style.display = 'block';
 
-    const URL = "https://api-users-cors.onrender.com/api/user/register";
+                // 👉 Enviar log de acción
+                enviarLog(emailR, "registro");
 
-    fetch(URL, {
-        method: "POST",
+                setTimeout(function () {
+                    window.location.href = 'index.html';
+                }, 2000);
+            } else {
+                errorMessageEmailR.style.display = 'flex';
+            }
+        })
+        .catch(err => {
+            loader.style.display = 'none';
+            console.error(err);
+            alert("Ocurrió un error. Intenta nuevamente.");
+        });
+    }
+});
+
+function enviarLog(correo, accion) {
+    const logData = {
+        correo: correo,
+        accion: accion
+    };
+
+    fetch('https://logs-d4hu.onrender.com/logs', {
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data) 
+        body: JSON.stringify(logData)
     })
-    .then(resp => resp.json())
-    .then(responseData => {
-		if (responseData.error === null) {
-        	loader.style.display = 'none';
-        const header = document.querySelector('.header');
-        header.style.display = 'block'; 
-		setTimeout(function() {
-    window.location.href = 'index.html';
-}, 2000);
-
-        } else {
-			loader.style.display = 'none';
-			errorMessageEmailR.style.display = 'flex';
-           // alert("Error en el registro: " + (responseData.error || "Error desconocido")); // Manejo de error más seguro
+    .then(resp => {
+        if (!resp.ok) {
+            console.warn(`No se pudo enviar log de acción: ${accion}`);
         }
     })
     .catch(err => {
-        console.error(err);
-        alert("Ocurrió un error. Intenta nuevamente.");
+        console.warn(`Error enviando log de acción (${accion}):`, err);
     });
-    }; 
-});
-
+}
 
 function closeErrorMessage(elementId) {
     const errorMessage = document.getElementById(elementId);
-    if (!errorMessage) return; 
+    if (!errorMessage) return;
     errorMessage.classList.add('hide');
     setTimeout(() => {
-        errorMessage.style.display = 'none'; 
+        errorMessage.style.display = 'none';
     }, 800);
     setTimeout(() => {
-        errorMessage.classList.remove('hide'); 
+        errorMessage.classList.remove('hide');
     }, 800);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const closeButton = document.querySelector('.info__closeName');
-    closeButton.addEventListener('click', () => closeErrorMessage('errorMessageName'));
+    document.querySelector('.info__closeName')?.addEventListener('click', () => closeErrorMessage('errorMessageName'));
+    document.querySelector('.info__closeEmail')?.addEventListener('click', () => closeErrorMessage('errorMessageEmail'));
+    document.querySelector('.info__closeEmailR')?.addEventListener('click', () => closeErrorMessage('errorMessageEmailR'));
+    document.querySelector('.info__closePassword')?.addEventListener('click', () => closeErrorMessage('errorMessagePassword'));
 });
-document.addEventListener('DOMContentLoaded', function () {
-    const closeButton = document.querySelector('.info__closeEmail');
-    closeButton.addEventListener('click', () => closeErrorMessage('errorMessageEmail'));
-});
-document.addEventListener('DOMContentLoaded', function () {
-    const closeButton = document.querySelector('.info__closeEmailR');
-    closeButton.addEventListener('click', () => closeErrorMessage('errorMessageEmailR'));
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const closeButton = document.querySelector('.info__closePassword');
-    closeButton.addEventListener('click', () => closeErrorMessage('errorMessagePassword'));
-});
-
 
 function validateName(name) {
-    const nameRegex = /^[a-zA-Z\s]+$/; 
+    const nameRegex = /^[a-zA-Z\s]+$/;
     return name.length >= 6 && nameRegex.test(name);
-}
-
-function validarNombre(name) {
-    const regex = /^[a-zA-Z]{6}$/;
-    return regex.test(name);
 }
 
 function validateEmail(email) {
@@ -126,25 +132,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const dataConsentCheckbox = document.getElementById("dataConsent");
     const registerButton = document.getElementById("btnSendR");
 
-    // Evento para habilitar/deshabilitar el botón
     dataConsentCheckbox.addEventListener("change", () => {
         registerButton.disabled = !dataConsentCheckbox.checked;
     });
 });
 
 function openPrivacyPolicy(event) {
-    event.preventDefault(); // Evita que el enlace abra la página de forma predeterminada.
+    event.preventDefault();
 
-    // Configuración de la ventana emergente
     const width = 600;
     const height = 400;
     const left = (window.innerWidth - width) / 2;
     const top = (window.innerHeight - height) / 2;
 
-    // Abre una nueva ventana
     window.open(
-        "privacy-policy.html", // URL de la política de privacidad
-        "PrivacyPolicy", // Nombre de la ventana
+        "privacy-policy.html",
+        "PrivacyPolicy",
         `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`
     );
 }
+</script>
