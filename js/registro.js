@@ -1,4 +1,3 @@
-<script>
 document.querySelector("#btnSendR").addEventListener('click', (event) => {
     event.preventDefault();
 
@@ -151,4 +150,3 @@ function openPrivacyPolicy(event) {
         `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`
     );
 }
-</script>
