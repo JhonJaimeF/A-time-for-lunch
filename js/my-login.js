@@ -18,28 +18,52 @@ document.querySelector("#btnSend").addEventListener('click', () => {
     })
     .then(resp => resp.json())
     .then(responseData => {
+        loader.style.display = 'none';
         if (responseData.message) {
-            loader.style.display = 'none';
-
-
             if (responseData.data && responseData.data.token) {
                 localStorage.setItem('authToken', responseData.data.token); // Almacena el token
                 if (responseData.data.userId) {
                     localStorage.setItem('userId', responseData.data.userId);
                     localStorage.setItem('email', responseData.data.email);
-                     localStorage.setItem('name', responseData.data.name);
-                    mostrarUserId(); // Llama al método para mostrar el ID en la consola
+                    localStorage.setItem('name', responseData.data.name);
+                    mostrarUserId();
                 }
-                
+
+                // Enviar log de acción
+                const logData = {
+                    email: email,
+                    action: "login"
+                };
+
+                fetch('https://logs-d4hu.onrender.com/logs', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(logData)
+                })
+                .then(logResp => {
+                    if (!logResp.ok) {
+                        console.warn('No se pudo enviar el log');
+                    }
+                    // No bloqueamos la navegación por error en log
+                })
+                .catch(err => {
+                    console.warn('Error enviando log:', err);
+                });
+
+                // Redirección según email
                 if (email === 'attimeforlunch@gmail.com') {
                     window.location.href = 'reserva.html';
-                    return; // Detenemos la ejecución del resto del código
+                    return;
                 } else {
-                    window.location.href = 'reservaCliente.html'; // Redirige a la página protegida
+                    window.location.href = 'reservaCliente.html';
                 } 
+
+            } else {
+                errorMessage.style.display = 'flex';
             }
         } else {
-            loader.style.display = 'none';
             errorMessage.style.display = 'flex';
         }
     })
@@ -61,5 +85,5 @@ function mostrarUserId() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    mostrarUserId(); // Llama al método al cargar la página
+    mostrarUserId();
 });
