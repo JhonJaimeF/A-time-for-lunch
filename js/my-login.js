@@ -31,8 +31,8 @@ document.querySelector("#btnSend").addEventListener('click', () => {
 
                 // Enviar log de acción
                 const logData = {
-                    email: email,
-                    action: "login"
+                    correo: email,
+                    accion: "login"
                 };
 
                 fetch('https://logs-d4hu.onrender.com/logs', {
